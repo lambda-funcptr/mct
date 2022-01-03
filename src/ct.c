@@ -148,7 +148,7 @@ int subexec(mct_options* options) {
 		chdir("/");
 	}
 
-	char** exec_argv = malloc(sizeof(size_t) * (options->exec_argc));
+	char** exec_argv = malloc(sizeof(size_t) * (options->exec_argc + 1));
 
 	memcpy(exec_argv, &(options->exec_args[0]), sizeof(size_t) * options->exec_argc);
 
