@@ -15,15 +15,17 @@ Have the first line of /etc/setuid for your user configured (LXC has some exampl
 ## Usage
 
 ```console
-# Create a holding directory for our "container" that is world-writable
-mkdir -p alpine
-chmod 777 alpine
-# We create a root filesystem at alpine/root owned by the container "root"
-mct -R / - mkdir alpine/root
-mct -R / - tar -xzvf alpine-minirootfs-3.15.0-x86_64.tar.gz -C alpine/root
-# Invoke a shell in the container
-mct -R alpine/root - /bin/sh
-...
+$ # Create a holding directory for our "container" that is world-writable
+$ mkdir -p alpine
+$ chmod 777 alpine
+$ # We create a root filesystem at alpine/root owned by the container "root"
+$ mct -R / - mkdir alpine/root
+$ mct -R / - tar -xzvf alpine-minirootfs-3.15.0-x86_64.tar.gz -C alpine/root
+$ # Invoke a shell in the container
+$ mct -R alpine/root - /bin/sh
+/ # whoami
+root
+/ # exit
 # Cleanup after ourselves
-mct -R / - rm -rf alpine/root
+$ mct -R / - rm -rf alpine/root
 ```
